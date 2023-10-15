@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "974167235324",
+    "project_id": "peer-to-peer-notes-app",
+    "storage_bucket": "peer-to-peer-notes-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974167235324:android:dfde9f6b3d19734c235579",
+        "android_client_info": {
+          "package_name": "com.example.firebase_notes_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtTeR17Nf8i9NaI0H2khruukFk8BQ7brY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
