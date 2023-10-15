@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -88,6 +89,60 @@ class _HomeScreenState extends State<HomeScreen> {
         );
       },
     );
+  }
+
+  updateTodo(DocumentSnapshot documentSnapshot) {
+    updateTodosController.text = documentSnapshot['todoName'];
+    return showModalBottomSheet(
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(20))),
+        context: context,
+        builder: (context) {
+          return SingleChildScrollView(
+            child: Padding(
+              padding: EdgeInsets.only(
+                  bottom: MediaQuery.of(context).viewInsets.bottom),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    TextField(
+                      controller: updateTodosController,
+                      maxLines: null,
+                      decoration: InputDecoration(
+                        hintText: 'Update Todo',
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Colors.blue,
+                            width: 2,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                        onPressed: () async {
+                          print(updateTodosController.text);
+                          String todoName = updateTodosController.text;
+                          DateTime currentDate = DateTime.now();
+
+                          setState(() {
+                            updateTodosController.text = '';
+                            Navigator.pop(context);
+                          });
+                        },
+                        child: const Text("Update Todo"))
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
   }
 
   @override
